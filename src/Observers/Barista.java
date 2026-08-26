@@ -1,4 +1,5 @@
 package observers;
+import data.CoffeeLot;
 
 public class Barista implements Observer {
 
@@ -11,18 +12,21 @@ public class Barista implements Observer {
     }
 
     @Override
-    public void update(String variety, String tastingNotes,
-                       String nameProducer, String origin,
-                       int height, int availableQuantity) {
+    public void update(CoffeeLot coffeeLot) {
 
-        System.out.println("Notificación para: " + name);
-        System.out.println("Varietal: " + variety);
-        System.out.println("Notas de cata: " + tastingNotes);
-        System.out.println("Productor: " + nameProducer);
-        System.out.println("Origen: " + origin);
-        System.out.println("Altura: " + height + " msnm");
+        System.out.println("\nNotificación para: " + name);
+        System.out.println("Varietal: " + coffeeLot.getVariety());
+        System.out.println("Notas de cata: "
+                + coffeeLot.getTastingNotes());
+        System.out.println("Productor: "
+                + coffeeLot.getProducerName());
+        System.out.println("Origen: "
+                + coffeeLot.getOrigin());
+        System.out.println("Altura: "
+                + coffeeLot.getHeight() + " msnm");
         System.out.println("Cantidad disponible: "
-                           + availableQuantity + " libras");
+                + coffeeLot.getAvailableQuantity() + " libras");
+        System.out.println("--------------------------------");
     }
 
     public String getName() {

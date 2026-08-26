@@ -3,9 +3,10 @@ package subject;
 import observers.Observer;
 
 public interface Subject {
-	
-	void registerObserver(Observer obs);
-	void removeObserver(Observer obs);
-	void notifyObservers();
-	
+
+    void registerObserver(Observer observer);
+
+    void removeObserver(Observer observer);
+
+    void notifyObservers();
 }
