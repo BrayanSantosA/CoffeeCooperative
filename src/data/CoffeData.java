@@ -41,7 +41,7 @@ private List<Observer> observers;
         }
     }
 
-    public void registrarLote(CoffeeLot coffeeLot) {
+    public void registerLot(CoffeeLot coffeeLot) {
 
         this.coffeeLot = coffeeLot;
 
