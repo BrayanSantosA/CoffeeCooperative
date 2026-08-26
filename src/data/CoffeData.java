@@ -6,32 +6,55 @@ import java.util.List;
 
 public class CoffeData implements Subject{
 
-    private List<Observer> observers = new ArrayList<Observer>();
-	private String variety;
-	private String tastingNotes;
-	private String nameProducer;
-	private String origin;
-	private int height;
-	private int availableQuantity;
+private List<Observer> observers;
+    private CoffeeLot coffeeLot;
 
-    public void registerObserver(Observer o) {
-		System.out.println("Suscribete para recibir notificaciones");
-		observers.add(o);
-	}
+    public CoffeData() {
+        observers = new ArrayList<>();
+    }
 
-	public void removeObserver(Observer o) {
-		System.out.println("Desuscribete si ya no quieres recibir información");
-		observers.remove(o);
-	}
+    @Override
+    public void registerObserver(Observer observer) {
 
-	public void notifyObservers() {
-		System.out.println("\n   Hay una nueva notificación de un lote de cafe");
-		for (Observer observer : observers) {
-			System.out.print("  ");
-			observer.update(variety, tastingNotes, nameProducer, origin, height, availableQuantity);
-		}
-	}
+        observers.add(observer);
 
-	
+        System.out.println("Barista suscrito correctamente.");
+    }
+
+    @Override
+    public void removeObserver(Observer observer) {
+
+        observers.remove(observer);
+
+        System.out.println("Barista eliminado de la suscripción.");
+    }
+
+    @Override
+    public void notifyObservers() {
+
+        System.out.println(
+            "\nHay una nueva notificación de un lote de café."
+        );
+
+        for (Observer observer : observers) {
+            observer.update(coffeeLot);
+        }
+    }
+
+    public void registrarLote(CoffeeLot coffeeLot) {
+
+        this.coffeeLot = coffeeLot;
+
+        System.out.println("\nNuevo lote registrado:");
+        System.out.println("Varietal: " + coffeeLot.getVariety());
+        System.out.println("Productor: "
+                + coffeeLot.getProducerName());
+        System.out.println("Cantidad: "
+                + coffeeLot.getAvailableQuantity()
+                + " libras");
+
+        notifyObservers();
+    }
+
 
 }
